@@ -94,17 +94,20 @@ function removeScaleCv(){
 /*==================== GENERATE PDF ====================*/ 
 // PDF generated area
 let resumeButton = document.getElementById('resume-button')
-
 let areaCV = document.getElementById('area-cv')
-
 // Html2pdf options
-
-
+let opt = {
+    margin:       1,
+    filename:     'Jefferson Pulido CV.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 4 },
+    jsPDF:        { format: [389.28, 210.89], orientation: 'portrait' }
+    /*jsPDF:        { format: [Alto, Ancho], orientation: 'portrait' }*/
+  };
 // Function to call areaCv and Html2Pdf options 
 function generateResume(){
-    html2pdf(areaCV)
+    html2pdf(areaCV, opt)
 }
-
 // When the button is clicked, it executes the three functions
 resumeButton.addEventListener('click', () => {
     // 1. The class .scale-cv is added to the body, where it reduces the size of the elements
