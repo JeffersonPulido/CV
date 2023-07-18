@@ -101,7 +101,7 @@ let opt = {
     filename:     'Jefferson Pulido CV.pdf',
     image:        { type: 'jpeg', quality: 0.98 },
     html2canvas:  { scale: 4 },
-    jsPDF:        { format: [405, 216], orientation: 'portrait' }
+    jsPDF:        { format: [426.5, 216], orientation: 'portrait' }
     /*jsPDF:        { format: [Alto, Ancho], orientation: 'portrait' }*/
   };
 // Function to call areaCv and Html2Pdf options 
