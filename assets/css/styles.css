@@ -455,6 +455,10 @@ img {
   font-size: var(--smaller-font-size);
 }
 
+.experience__description a {
+  color: var(--text-color);
+  font-weight: bold;
+}
 /*========== SKILLS AND LANGUAGES ==========*/
 .skills__content,
 .languages__content {
