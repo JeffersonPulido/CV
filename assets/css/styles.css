@@ -450,6 +450,11 @@ img {
   color: var(--title-color);
 }
 
+.experience__company a {
+  color: var(--title-color);
+  text-decoration: underline;
+}
+
 .education__year,
 .experience__description {
   font-size: var(--smaller-font-size);
@@ -457,6 +462,7 @@ img {
 
 .experience__description a {
   color: var(--text-color);
+  text-decoration: underline;
   font-weight: bold;
 }
 /*========== SKILLS AND LANGUAGES ==========*/
