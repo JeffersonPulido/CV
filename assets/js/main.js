@@ -81,7 +81,7 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
-/*==================== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ====================*/ 
+/*==================== REDUCE THE SIZE FOR PDF EXPORT ====================*/
 function scaleCv(){
     document.body.classList.add('scale-cv')
 }
@@ -97,24 +97,28 @@ let resumeButton = document.getElementById('resume-button')
 let areaCV = document.getElementById('area-cv')
 // Html2pdf options
 let opt = {
-    margin:       1,
+    margin:       0.35,
     filename:     'Jefferson Pulido CV.pdf',
     image:        { type: 'jpeg', quality: 0.98 },
     html2canvas:  { scale: 4 },
-    jsPDF:        { format: [499, 216], orientation: 'portrait' }
-    /*jsPDF:        { format: [Alto, Ancho], orientation: 'portrait' }*/
+    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' },
+    pagebreak:    {
+        mode: ['css', 'legacy'],
+        avoid: ['.education__content', '.experience__content', '.certificates__content']
+    }
   };
 // Function to call areaCv and Html2Pdf options 
-function generateResume(){
-    html2pdf(areaCV, opt)
+async function generateResume(){
+    scaleCv()
+    try {
+        await html2pdf().set(opt).from(areaCV).save()
+    } catch (error) {
+        console.error('No fue posible generar el PDF del CV.', error)
+        window.alert('No fue posible generar el PDF del CV. Inténtalo de nuevo.')
+    } finally {
+        removeScaleCv()
+    }
 }
 // When the button is clicked, it executes the three functions
-resumeButton.addEventListener('click', () => {
-    // 1. The class .scale-cv is added to the body, where it reduces the size of the elements
-    scaleCv()
-    // 2. The PDF is generated
-    generateResume()
-    // 3. The .scale-cv class is removed from the body after 5 seconds to return to normal size.
-    setTimeout(removeScaleCv, 5000)
-})
+resumeButton.addEventListener('click', generateResume)
     

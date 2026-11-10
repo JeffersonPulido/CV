@@ -163,6 +163,13 @@ body.scale-cv {
   gap: 0.25rem;
 }
 
+.scale-cv .education__content,
+.scale-cv .experience__content,
+.scale-cv .certificates__content {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
 .scale-cv .skills__name {
   margin-bottom: var(--mb-1);
 }
